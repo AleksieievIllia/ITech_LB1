@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LB2</title>
+</head>
+<style>
+    li {
+        list-style: none;
+        justify-content: flex-end;
+    }
+
+    .wrapper {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        margin: auto;
+        height: 335px;
+        width: 360px;
+        padding: 20px;
+        display: flex;
+        flex-flow: row wrap;
+        border: 10px solid #1d1a2f;
+        justify-content: space-between;
+    }
+
+    .block {
+        height: 100px;
+        width: 100px;
+        background-color: #8bd450;
+    }
+
+    .block:not(:nth-child(n)) {
+        margin-right: 20px;
+    }
+
+    .block:not(:nth-child(n + 4)) {
+        margin-bottom: 20px;
+    }
+
+    .block:nth-child(2) {
+        height: 200px;
+    }
+
+    .list-item {
+        margin-left: 20px;
+        font-size: 60px;
+        line-height: 50px;
+        color: #1d1a2f;
+        list-style: square;
+    }
+
+    .list-item:not(:last-child) {
+        margin-bottom: 15px;
+    }
+</style>
+<body>
+<h1>Вариант 2</h1>
+<div class="wrapper">
+    <ul class="list">
+        <li class="list-item">Строка 1</li>
+        <li class="list-item">Строка 2</li>
+        <li class="list-item">Строка 3</li>
+        <li class="list-item">Строка 4</li>
+        <li class="list-item">Строка 5</li>
+    </ul>
+    <div class="container">
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+    </div>
+</div>
+</body>
+</html>
