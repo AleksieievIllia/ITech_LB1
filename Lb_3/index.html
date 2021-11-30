@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LB3</title>
+    <link rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="script.js" rel="script" type="text/javascript"></script>
+</head>
+<style>
+    div.gallery {
+        margin: 5px;
+        border: 1px solid #ccc;
+        width: 180px;
+        display: inline-block;
+    }
+    div.gallery img {
+        width: 90%;
+        height: auto;
+    }
+    .buttons-container{
+        text-align: center;
+    }
+    .gallery-container{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .arrow-buttons{
+        margin-bottom: 10px;
+    }
+    button{
+        background-color: #fbffd8;
+        color: black;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 5px #999;
+        width: 90px;
+        height: 30px;
+        border-radius: 15px;
+    }
+</style>
+<body>
+<div class="gallery-container">
+    <div class="gallery">
+        <img src="images/1.jpg" alt="1" width="600" height="600">
+        <img src="images/2.jpg" alt="2" width="700" height="700">
+        <img src="images/3.jpg" alt="3" width="1000" height="1000">
+        <img src="images/4.jpg" alt="4" width="622" height="601">
+        <img src="images/5.jpg" alt="5" width="1024" height="1024">
+    </div>
+</div>
+<div class="buttons-container">
+    <div class="arrow-buttons">
+        <button id="up">&#8593;</button>
+        <button id="down">&#8595;</button>
+    </div>
+    <div class="zoom-buttons">
+        <button id="plus">+</button>
+        <button id="minus">-</button>
+    </div>
+</div>
+</body>
+<script>
+    $(function () {
+        var images = [
+            "images/1.jpg",
+            "images/2.jpg",
+            "images/3.jpg",
+            "images/4.jpg",
+            "images/5.jpg"
+        ]
+        function setImages(){
+            $("img").each(function (index) {
+                $(this).attr('src', images[index])
+            })
+        }
+        function shiftImages(direction){
+            var moved_element;
+            if (direction){
+                moved_element = images.shift();
+                images.push(moved_element)
+            }
+            else{
+                moved_element = images.pop();
+                images.unshift(moved_element)
+            }
+            setImages()
+        }
+        function zoomImage(direction){
+            var height = parseInt($("img").first().attr('height'));
+            if (direction){
+                $("img").each(function () {
+                    $(this).animate({width: '+=2px', height: '+=2px'})
+                })
+            }
+            else{
+                $("img").each(function () {
+                    $(this).animate({width: '-=2px', height: '-=2px'})
+                })
+            }
+        }
+        $('#up').click(function () {
+            shiftImages(true)
+        })
+        $('#down').click(function () {
+            shiftImages(false)
+        })
+        $('#plus').click(function () {
+            zoomImage(true)
+        })
+        $('#minus').click(function () {
+            zoomImage(false)
+        })
+    })
+</script>
+</html>
